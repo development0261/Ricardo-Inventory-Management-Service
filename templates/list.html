@@ -1,0 +1,26 @@
+
+<button class="btn btn-primary pull-right" ui-sref="item">New Item</button>
+<br/>
+<br/>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Product Image</th>
+            <th>Product Name</th>
+            <th>Product Description</th>
+            <th>Product Price</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr ng-repeat="(key, value) in items">
+            <td class="align-middle"><img style="height: 50px;width: 50px;object-fit: cover;" src="data:{{value._attachments.file_name.content_type}};base64,{{value._attachments.file_name.data}}"></td>
+
+            <td class="align-middle">{{value.product_name}}</td>
+            <td class="align-middle">{{value.product_description}}</td>
+            <td class="align-middle">{{value.product_price}}</td>
+            <td class="align-middle"><a href="" class="btn btn-warning" ui-sref="item({documentId: key, documentRevision: value._rev})">Edit</a>&nbsp;<a href="" class="btn btn-danger" ng-click="delete(value._id, value._rev)">Delete</a></td>
+        </tr>
+    </tbody>
+</table>
